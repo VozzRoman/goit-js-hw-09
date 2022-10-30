@@ -3,12 +3,7 @@ import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
 const buttonStart = document.querySelector('button[data-start]');
 
-
-
-
 buttonStart.disabled = true;
-
-
 
 const optinon = {
 	isActive: false,
@@ -27,29 +22,19 @@ const optinon = {
 						return;
 					}
 					optinon.isActive = true;
+
 						let intervalId = setInterval(() => {
 						const currentTime = new Date().getTime();
 						const chooseDate = new Date(selectedDates)
 						const difference = chooseDate - currentTime;
-						const { days, hours, minutes, seconds } = convertMs(difference)
-						console.log(`${days} : ${hours} : ${minutes} : ${seconds}`);
-						const dayResf = document.querySelector('span[data-days]');
-						dayResf.textContent = `${days}`;
-						const hoursResf = document.querySelector('span[data-hours]');
-						hoursResf.textContent = `${hours}`;
-						const minutesResf = document.querySelector('span[data-minutes]');
-						minutesResf.textContent = `${minutes}`;
-						const secondsResf = document.querySelector('span[data-seconds]');
-							secondsResf.textContent = `${seconds}`;
+						const value = convertMs(difference)
+						timerRefs(value);
 							if (difference < 1000) {
 								clearInterval(intervalId);
 						}
-						
-						
 					}, 1000);
 
 				}
-
 				buttonStart.disabled = false;
 				
 			}	
@@ -57,6 +42,17 @@ const optinon = {
 	
 	}	
 
+function timerRefs({ days, hours, minutes, seconds }) {
+	const dayResf = document.querySelector('span[data-days]');
+	dayResf.textContent = `${days}`;
+	const hoursResf = document.querySelector('span[data-hours]');
+	hoursResf.textContent = `${hours}`;
+	const minutesResf = document.querySelector('span[data-minutes]');
+	minutesResf.textContent = `${minutes}`;
+	const secondsResf = document.querySelector('span[data-seconds]');
+	secondsResf.textContent = `${seconds}`;
+	console.log(`${days} : ${hours} : ${minutes} : ${seconds}`);
+	}
 
 
 flatpickr("#datetime-picker", optinon);
@@ -81,9 +77,6 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
 
 function addLeadingZero(value) {
 	return String(value).padStart(2, '0');

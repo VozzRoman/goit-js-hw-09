@@ -17,6 +17,13 @@ function onInput(e) {
 
 function onSubmit(e) {
 	e.preventDefault()
+
+//После того как написал этот код, понял что можно написать без прослушки импута
+// и дополнительного обьекта, получив просто данные на прямую:
+//let delay = e.currentTarget.delay.valueAsNumber
+//let stepDelay = e.currentTarget.position.valueAsNumber
+//const numberOfPromises = e.currentTarget.amount.valueAsNumber
+	
 	let delay = Number(dataStorage.delay);
 	let stepDelay = Number(dataStorage.step);
 	console.log(stepDelay, delay);
