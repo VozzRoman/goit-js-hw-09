@@ -17,6 +17,50 @@ img {
   max-width: 100%;
 }
 
+.timer {
+	margin-top: 50px;
+	justify-content: center;
+	display: flex;
+}
+.field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid gray;
+	padding: 10px;
+	width: 90px;
+	margin-left: 40px;
+	border-radius: 8px;
+	
+}
+.value {display: block;
+	font-size: 60px;
+}
+
+.button{
+	cursor: pointer;
+	display: inline-flex;
+	font-size: 20px;
+	color: wheat;
+	align-items: center;
+	background-color: blue;
+	justify-content: center;
+	padding: 10px 30px;
+	border-radius: 8px;
+	margin-left: 40px;
+}
+
+.button:disabled{
+	background-color: aliceblue;
+	color: #212121;
+}
+
+
+
+
+
+
+
 .js-form{
 	margin-left: 200px;
 	display: inline-block;
